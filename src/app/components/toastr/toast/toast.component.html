@@ -1,0 +1,14 @@
+<div class="n-toast"
+     (click)="close()"
+     role="alert"
+     [ngStyle]="{'background-color': getBackgroundColor(toast.toastType), 'color' : getTextColorClass(toast.toastType)}">
+  <div class="toast-close">
+    <i class="x-icon icon-FiX" [ngStyle]="{'color' : getTextColorClass(toast.toastType)}"></i>
+  </div>
+  <div class="toast-icon x-flex-center">
+    <i class="x-icon" [ngClass]="getClass(toast.toastType)"></i>
+  </div>
+  <div class="toast-body">
+    <div class="toast-content">{{ toast.content }}</div>
+  </div>
+</div>

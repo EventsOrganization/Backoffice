@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { AuthReducer } from './auth/auth.reducer';\nexport const AppReducers = {\n  appAuth: AuthReducer\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

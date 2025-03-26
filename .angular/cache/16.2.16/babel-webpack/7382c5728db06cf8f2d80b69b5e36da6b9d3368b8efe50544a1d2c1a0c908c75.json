@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createAction, props } from '@ngrx/store';\nexport const setUserToken = createAction('Set User Token', props());\nexport const deleteUserToken = createAction('Delete User Token');","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,0 +1,55 @@
+<div class="flex n-gap-3">
+  <form *ngIf="eventForm" [formGroup]="eventForm" class="flex dir-column col-4 n-pad-2 border-radius-16 box-shadow n-gap-3">
+    <div class="flex space-between">
+      <div *ngIf="showEventForm">Event</div>
+      <button class="button col-5" (click)="toggleEventForm()">{{ showEventForm ? 'Close' : 'Add Event' }}</button>
+    </div>
+    <div class="flex dir-column n-gap-3" *ngIf="showEventForm">
+      <input type="text" class="text-input" formControlName="message" placeholder="message">
+      <input type="text" class="text-input" formControlName="location" placeholder="location">
+      <input type="date" class="text-input" formControlName="date" placeholder="date">
+      <input type="text" class="text-input" formControlName="event" placeholder="event">
+      <button class="button col-5 align-self-end" [disabled]="eventForm.invalid" (click)="saveInfo()">Submit
+      </button>
+    </div>
+  </form>
+
+  <form *ngIf="guestForm" [formGroup]="guestForm" class="flex dir-column col-4 n-pad-2 border-radius-16 box-shadow n-gap-3">
+    <div class="flex space-between">
+      <div *ngIf="showGuestForm">Create guest</div>
+      <button class="button col-5" (click)="toggleGuestForm()">{{ showGuestForm ? 'Close' : 'Add Guest' }}</button>
+    </div>
+    <div class="flex dir-column n-gap-3" *ngIf="showGuestForm">
+      <input type="text" class="text-input" formControlName="firstName" placeholder="First name">
+      <input type="text" class="text-input" formControlName="lastName" placeholder="Last name">
+      <input type="text" class="text-input" formControlName="message" placeholder="Message">
+      <button class="button col-5 align-self-end" [disabled]="guestForm.invalid" (click)="createGuest()">Submit
+      </button>
+    </div>
+  </form>
+</div>
+<div class="flex dir-column n-padt-6 n-gap-2">
+  <ng-container *ngIf="guests">
+    <ng-container *ngFor="let guest of guests">
+      <div class="flex n-pad-2 border-radius-16 space-between box-shadow">
+        <div>{{ guest.firstName }}</div>
+        <div>{{ guest.lastName }}</div>
+        <div>{{ guest.message }}</div>
+        <div>{{ guest.escort?.firstName }}</div>
+        <div>{{ guest.escort?.lastName }}</div>
+        <ng-container *ngIf="guest.kids?.length > 0">
+          <ng-container *ngFor="let child of guest.kids">
+            <div class="col-8">
+              {{ child.firstName }}
+              {{ child.lastName }}
+              {{ child.age }}
+            </div>
+          </ng-container>
+        </ng-container>
+        <button class="button" (click)="deleteGuest(guest)">Delete</button>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>

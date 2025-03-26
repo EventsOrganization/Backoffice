@@ -1,0 +1,13 @@
+<div class="n-topbar">
+  <h4>Welcome Matej</h4>
+  <div>Log out</div>
+</div>
+<div class="n-sidebar">
+  <div class="n-sidebar-item" (click)="openPage('users')">Users</div>
+  <div class="n-sidebar-item" (click)="openPage('events')">Events</div>
+  <div class="n-sidebar-item" (click)="openPage('guests')">Guests</div>
+</div>
+<div class="n-content-container">
+  <router-outlet></router-outlet>
+</div>
+<app-toastr></app-toastr>

@@ -1,0 +1,31 @@
+<div class="n-pad-5">
+  <button class="button" (click)="toggleForm()">Add new user</button>
+  <form [formGroup]="userForm" *ngIf="showUserForm" (ngSubmit)="createUser()">
+    <div class="border-radius-16 box-shadow n-pad-2 flex dir-column n-gap-2 n-mart-2 col-4">
+      <input type="text" class="text-input" formControlName="firstName" placeholder="First Name">
+      <input type="text" class="text-input" formControlName="lastName" placeholder="Last Name">
+      <input type="text" class="text-input" formControlName="username" placeholder="Username">
+      <input type="password" class="text-input" formControlName="password" placeholder="Password">
+      <input type="email" class="text-input" formControlName="email" placeholder="Email">
+      <div class="flex justify-end">
+        <button class="button" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="flex dir-column n-gap-1 n-padt-2">
+    <ng-container *ngIf="users?.length > 0">
+      <ng-container *ngFor="let user of users; let last = last">
+        <div class="item-list">
+          <div class="flex-1">{{ user.username }}</div>
+          <div class="flex-1">{{ user.firstName }}</div>
+          <div class="flex-1">{{ user.lastName }}</div>
+          <div class="flex-1">{{ user.email }}</div>
+          <div class="flex-1">{{ user.createdAt }}</div>
+          <button class="button" (click)="deleteUser(user.id)">Delete</button>
+        </div>
+        <div class="hr" *ngIf="!last"></div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="toast-overlay" *ngIf="toasts.length > 0">
+  <ng-container *ngFor="let toast of toasts">
+    <app-toast [toast] = toast
+               (onClose) = "onClose(toast)">
+    </app-toast>
+  </ng-container>
+</div>
